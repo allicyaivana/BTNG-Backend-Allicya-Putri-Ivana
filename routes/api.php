@@ -2,7 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\TaskController; 
+use App\Http\Controllers\Api\TaskController;
+use App\Http\Controllers\Api\SaltbreadController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -32,3 +33,6 @@ Route::get('/tasks/{id}', [TaskController::class, 'show']);
 Route::put('/tasks/{id}', [TaskController::class, 'update']);
 Route::patch('/tasks/{id}', [TaskController::class, 'update']);
 Route::delete('/tasks/{id}', [TaskController::class, 'destroy']);
+Route::apiResource('saltbreads', SaltBreadController::class);
+Route::put('/saltbreads/{id}', [SaltbreadController::class, 'update'])->name('saltbreads.update_put');
+Route::patch('/saltbreads/{id}', [SaltbreadController::class, 'update'])->name('saltbreads.update_patch');
